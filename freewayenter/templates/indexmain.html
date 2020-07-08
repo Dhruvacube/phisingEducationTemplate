@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Theme Made By www.w3schools.com - No Copyright -->
+    <title>M.A.C Products Giveaway</title>
+    <link rel="shortcut icon" type="image/icon" href="{% static 'images/mac.jpg' %}" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font: 20px Montserrat, sans-serif;
+            line-height: 1.8;
+            color: #f5f6f7;
+        }
+        
+        p {
+            font-size: 16px;
+        }
+        
+        .margin {
+            margin-bottom: 45px;
+        }
+        
+        .bg-1 {
+            background-color: #1abc9c;
+            /* Green */
+            color: #ffffff;
+        }
+        
+        .bg-5 {
+            background-color: rgb(36, 30, 30);
+            /* Green */
+            color: #ffffff;
+        }
+        
+        .bg-2 {
+            background-color: #474e5d;
+            /* Dark Blue */
+            color: #ffffff;
+        }
+        
+        .bg-3 {
+            background-color: #ffffff;
+            /* White */
+            color: #555555;
+        }
+        
+        .bg-4 {
+            background-color: #2f2f2f;
+            /* Black Gray */
+            color: #fff;
+        }
+        
+        .container-fluid {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+        
+        .navbar {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border: 0;
+            border-radius: 0;
+            margin-bottom: 0;
+            font-size: 12px;
+            letter-spacing: 5px;
+        }
+        
+        .navbar-nav li a:hover {
+            color: #1abc9c !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                {% if user.is_authenticated %}
+                <a class="navbar-brand" href="#">{{user}}{% else %}</a>
+                {% endif %}
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#aboutus">ABOUT US</a></li>
+                    <li><a href="#custreview">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- First Container -->
+    <div class="container-fluid bg-5 text-center" id="home">
+        <h3 class="margin">Are you looking for the free MAC cosmetic products?</h3>
+        <img src="{% static 'images/mac.jpg' %}" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
+        <h3>Then you are at the right place!</h3>
+    </div>
+
+    <!-- Second Container -->
+    <div class="container-fluid bg-1 text-center" id="aboutus">
+        <h3 class="margin">Please login using your instagram account!</h3>
+        <p>We insist's to login using your Instagram account so that we can verify that the entries are genuine and the entries are not made by the bots. After you login using your Instagram account we will redirect to the gleam.io webpage for the entries to be made. We this instagram possible by using the Instagram Authentication, thus we do not store your data.</p>
+        <a href="{% if user.is_authenticated %}https://gleam.io/sAaak/mac-cosmetics-giveaway{% else %}/instagramlogin/{% endif %}" class="btn btn-default btn-lg">
+            {% if user.is_authenticated %}Make your entry here{% else %}Verify using Instagram to activate the entry link!{% endif %}
+        </a>
+    </div>
+
+    <!-- Third Container (Grid) -->
+    <div class="container-fluid bg-3 text-center" id="custreview">
+        <h2 class="margin"><b>FAQ</b></h3><br>
+        <div class="row">
+            <div class="col-sm-4">
+            <p><b>In which countries this giveaway is available ?</b></p>
+                <p>This giveaway is available in India and it's neighbouring countries.</p>
+                <hr/>
+            </div>
+
+            <div class="col-sm-4">
+            <p><b>Is this giveaway free of cost ?</b></p>
+                <p>Yes it is totally free of cost! We don't even charge for the deliveries.</p>
+                <hr/>
+            </div>
+
+            <div class="col-sm-4">
+            <p><b>Is this giveaway genuine?</b></p>
+                <p>Yes this giveaway is totally genuine, we really give prize to our winners.</p>
+            <hr/>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="container-fluid bg-4 text-center">
+        <p><b>© </b><script>
+              document.write(new Date().getFullYear());
+          </script> M.A.C. <a href="https://www.maccosmetics.com/">www.maccosmetics.com</a></p>
+    </footer>
+
+</body>
+
+<script>
+    /**
+     * Disable right-click of mouse, F12 key, and save key combinations on page
+     */
+    window.onload = function() {
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault();
+        }, false);
+        document.addEventListener("keydown", function(e) {
+            //document.onkeydown = function(e) {
+            // "I" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                disabledEvent(e);
+            }
+            // "J" key
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                disabledEvent(e);
+            }
+            // "S" key + macOS
+            if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+                disabledEvent(e);
+            }
+            // "U" key
+            if (e.ctrlKey && e.keyCode == 85) {
+                disabledEvent(e);
+            }
+            // "F12" key
+            if (event.keyCode == 123) {
+                disabledEvent(e);
+            }
+        }, false);
+
+        function disabledEvent(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else if (window.event) {
+                window.event.cancelBubble = true;
+            }
+            e.preventDefault();
+            return false;
+        }
+    };
+</script>
+
+</html>
